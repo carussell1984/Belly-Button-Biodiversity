@@ -76,15 +76,35 @@ function buildCharts(sample) {
     // @TODO: Build a Bubble Chart using the sample data
     console.log(chartData[0].otu_ids)
 
-
+    console.log("ids") 
+    color_array = []
+    var ids = chartData[0].otu_ids
+    Object.entries(ids).forEach(([i, j]) => {
+      console.log(i, j)
+      if (j < 500) {
+        color_array.push("rgb(143, 188, 143)")
+      } else if (j < 1000) {
+        color_array.push("rgb(95, 158, 160)")
+      } else if (j < 1500) {
+        color_array.push("rgb(72, 61, 139)")
+      } else if (j < 2000) {
+        color_array.push("rgb(153, 50, 204)")
+      }  else if (j <2500 ) {
+         color_array.push("rgb(240, 128, 128)")
+      }  else {
+        color_array.push("rgb(178, 34, 34)")
+      };
+      });
     
+    console.log(color_array)
+
     var bubbledata = {
       x: chartData[0].otu_ids,
       y: chartData[0].sample_values,
       text: chartData[0].otu_labels,
       mode: 'markers',
       marker: {
-        color: chartData[0].otu_ids,
+        color: color_array,
         size: chartData[0].sample_values
       }
     };
