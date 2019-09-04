@@ -28,40 +28,40 @@ function buildMetadata(sample) {
     
     
   function buildGauge(sample) {
-      var url = `/metadata/${sample}`
-      console.log(url)
-      d3.json(url).then(function(response) {
-        var data = [response];
-        var washings = data[0].WFREQ;
+    var url = `/metadata/${sample}`
+    console.log(url)
+    d3.json(url).then(function(response) {
+      var data = [response];
+      var washings = data[0].WFREQ;
 
-        console.log(data)
-        console.log(washings)
+      console.log(data)
+      console.log(washings)
 
-      var gaugetrace = [{domain: {x: [0, 1], y: [0, 1]}, 
-                        value: washings, 
-                        title: {text: "Washings per Week"},
-                        type: "indicator", mode: "gauge+number", 
-                        gauge: {axis: {range: [null, 9]}, 
-                                    bar:{color:"black"},
-                    steps: [{range: [0, 1], color: "#9fdfbf"},
-                            {range: [1, 2], color: "#79d2a6"},
-                            {range: [2, 3], color: "#66cc99"},
-                            {range: [3, 4], color: "#53c68c"},
-                            {range: [4, 5], color: "#40bf80"},
-                            {range: [5, 6], color: "#39ac73"},
-                            {range: [6, 7], color: "#39ac73"},
-                            {range: [7, 8], color: "#339966"},
-                            {range: [8, 9], color: "#2d8659"}]}}];
+    var gaugetrace = [{domain: {x: [0, 1], y: [0, 1]}, 
+                      value: washings, 
+                      title: {text: "Washings per Week"},
+                      type: "indicator", mode: "gauge+number", 
+                      gauge: {axis: {range: [null, 9]}, 
+                                  bar:{color:"black"},
+                  steps: [{range: [0, 1], color: "#9fdfbf"},
+                          {range: [1, 2], color: "#79d2a6"},
+                          {range: [2, 3], color: "#66cc99"},
+                          {range: [3, 4], color: "#53c68c"},
+                          {range: [4, 5], color: "#40bf80"},
+                          {range: [5, 6], color: "#39ac73"},
+                          {range: [6, 7], color: "#39ac73"},
+                          {range: [7, 8], color: "#339966"},
+                          {range: [8, 9], color: "#2d8659"}]}}];
 
 
-      var layouttrace = {width: 500, height: 500, margin: {t: 0, b: 0}};
-      
-      
-      Plotly.newPlot("gauge", gaugetrace, layouttrace);
+    var layouttrace = {width: 500, height: 500, margin: {t: 0, b: 0}};
+
   
-  });
-}
+    Plotly.newPlot("gauge", gaugetrace, layouttrace);
 
+});
+
+}
 
 
 
